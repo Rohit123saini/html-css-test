@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newlin_textile</title>
+  <style>
+    * {
+      margin:0%;
+      padding:0%;
+    }
+    header{
+      background-color:rgb(126, 192, 250);
+      display: flex;
+      justify-content: space-between;
+      color:blue;
+      position: fixed;
+      z-index: 10;
+      width: 100%;
+      border:solid 1px;
+
+      
+    }
+    nav{
+      text-decoration: none;
+      margin-top: 1%;
+      margin-right:20px;
+    }
+    nav ul{
+      list-style: none;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      color: blue;
+      
+    }
+    li{
+      margin-left: 20px;
+      color:blue;
+    }
+    nav li a{
+      text-decoration: none;
+      color:blue;
+    }
+  </style>
+  <style>
+      .parallax {
+       
+    
+       height:100vh;
+       filter: brightness(0.5);
+       
+      
+       background-attachment: fixed;
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;
+       animation: fadeBackground 60s infinite alternate;
+     }
+     @keyframes fadeBackground {
+   0% {
+       background-image: url('https://images.pexels.com/photos/4405941/pexels-photo-4405941.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+       opacity: 5;
+   }
+   33% {
+       background-image: url('https://cameocleaners.com/wp-content/uploads/2020/06/what-is-linen-fabric-2048x1367.jpg');
+       opacity: 1;
+   }
+   66% {
+       background-image: url('https://s3.ap-southeast-1.amazonaws.com/gounesco.com/wp-content/uploads/2014/05/03065344/G-3.jpg');
+       opacity: 1;
+   }
+   100% {
+       background-image: url('https://th.bing.com/th/id/OIP.FrvNX0sQJu176guuTtID-wHaEs?rs=1&pid=ImgDetMain'); 
+       opacity: 1;
+   }
+}
+#staticphoto {
+        background-size: auto;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 10%;
+        left:15%;
+        right:15%;
+      }
+
+  </style>
+
+  <style>
+    .navigator1{
+      position:sticky;
+      top:35px;
+      width: 100%;
+      border: solid 1px;
+      background-color:rgb(126, 192, 250);
+      justify-content: center;
+      display:flex;
+      color:blue;
+      z-index: 1;
+    }
+    .navigator1 ul{
+      list-style: none;
+      text-decoration: none;
+      justify-content: center;
+      display: flex;
+      color: blue;
+      padding: 5px;
+      
+      
+    }
+    .navigator1 ul li{
+      justify-content: space-between;
+      color:blue;
+      margin-left: 60px;
+      
+    }
+    .navigator1 ul li a{
+      text-decoration: none;
+      color:blue; 
+      
+    }
+    
+  </style>
+<style>
+  .containers {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+        grid-auto-rows: 1fr;
+        text-align: center;
+        background-color: aquamarine;
+        justify-content: center;
+        height: 330px;
+        border: solid 2px;
+        border-color: blue;
+  }
+  .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+        grid-auto-rows: 1fr;
+        text-align: center;
+        background-color: aquamarine;
+        justify-content: center;
+        overflow: hidden;
+        
+  }
+  .photo {
+        background-color: red;
+        border: solid 2px;
+        border-color: blue;
+        width:flex;
+        height:375px;
+      }
+      .photos {
+        background-color: red;
+        border: solid 2px;
+        border-color: blue;
+        width:flex;
+        height:300px;
+ 
+      }
+      .photos img{
+        height:300px;
+        width:flex;
+        overflow: hidden;
+        transition: transform 0.1s ease-in-out;
+      }
+      .photos img:hover{
+
+        transform: scale(1.04);
+        overflow: hidden;
+        filter: brightness(130%);
+      }
+</style>
+<style>
+  .footer{
+    background-color: rgb(126, 192, 250);
+    text-align: center;
+    justify-content: center;
+    height: 350px;
+    width:100%;
+    border: solid 3px blue;
+    
+  }
+  .overlay-text {
+    position: static;
+    
+    
+    background-color: rgba(255, 255, 255, 0.7);
+    
+    border-radius: 5px;
+    font-size: 20px;
+}
+</style>
+<style>
+  .image-container {
+      position: relative;
+      width: 100%; /* Width of image container */
+      height: 300px; /* Height of image container */
+      overflow: hidden; /* To prevent overflow of image */
+      margin-bottom: 20px; /* Margin between containers */
+  }
+
+  .image-container img {
+      width: 100%; /* Make image fill the container */
+      height: 100%; /* Make image fill the container */
+      object-fit: cover; /* Cover the container with the image */
+  }
+
+  .button-container {
+      position: absolute;
+      bottom: 50%;
+      width: 100%;
+      justify-content: space-between;
+      opacity: 0;
+      transition:opacity 0.3s ease;
+      font-size: xx-large;
+      background: transparent;
+  }
+  .h1{
+    font-size: xx-large;
+  }
+
+  .button-container button {
+      margin: 0 10px;
+      padding: 5px 10px;
+      background-color: #007bff; /* Blue color, change as needed */
+      color: white;
+      border: none;
+      cursor: pointer;
+      background:transparent;
+      justify-content: space-between;
+
+      
+  }
+  .image-container:hover .button-container {
+        opacity: 1;
+  }
+</style>
+
+
+</head>
+<body>
+  
+   
+    <header>
+      <img src="https://newlin.vc/wp-content/uploads/2019/10/Newlin-logo-768x209.png" alt="logo" height="40" width="70">
+      
+      
+      <nav>
+          <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#Saree">Shop</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="help.html">Account</a></li>
+              <li><a href="cart.html">My cart</a></li>
+              <li><a href="#">Track order</a></li>
+              <li><a href="#">Place location</a></li>
+          </ul>
+      </nav>
+  </header>
+<div class="parallax">
+
+</div>
+
+<div >
+<div id="staticphoto">
+  <h1 style="font-size: 60px; height: 100px; color:white; font-style: italic; margin-top: 35px;">NEWLIN TEXTILE</h1>
+  <h2 style="font-size: 30px;  color:white; font-style: italic; margin-top: 25px;">🌟 Introducing Newlin: Where Quality Meets Style! 🌟</h2>
+  <h3 style="font-size: 20px;  color:white; font-style: italic; margin-top: 50px;">At Newlin, we're passionate about providing you with the finest linen textiles that seamlessly blend comfort, elegance, and durability. Our commitment to quality craftsmanship and attention to detail sets us apart in the textile industry.</h3>
+  <a href="#navigator1"><h1 style="font-size: 30px;  color:white; font-style: italic; margin-top: 25px;position: absolute; bottom: -40%; left: 42%;"><br>Go to Shop</h1></a>
+</div>
+<div class="navigator1" id="navigator1">
+
+<nav>
+  <ul >
+    <li><a href="#"><h1 style="font-size: large;">Old collection</h1></a></li>
+    <li><a href="#"><h1 style="font-size: large;">New collection</h1></a></li>
+    <li><a href="#"><h1 style="font-size: large;">Fancy</h1></a></li>
+    <li><a href="#"><h1 style="font-size: large;">Hnadmade</h1></a></li>
+              
+
+  </ul>
+  </nav>
+  </div>
+ 
+
+  <div class="container">
+    <div class="photo"><h1>Men <br>collection</h1><div class="image-container container1">
+      <img src="image1.jpg" alt="Image 1"> 
+      <div class="button-container">
+          <button onclick="prevImage('container1')"><h1 style="margin-right: 80px;"><</h1></button>
+          <button onclick="nextImage('container1')"><h1>></h1></button>
+      </div>
+  </div>
+  </div>
+ 
+
+  <div class="photo"><h1>Women <br>collection</h1><div class="image-container container2">
+    <img src="image2.jpg" alt="Image 2"> 
+    <div class="button-container">
+        <button onclick="prevImage('container2')"><h1 style="margin-right: 80px;"><</h1></button>
+        <button onclick="nextImage('container2')"><h1>></h1></button>
+    </div>
+</div>
+</div>
+
+<div class="photo"><h1>Babies <br>collection</h1><div class="image-container container3">
+  <img src="image3.jpg" alt="Image 3"> 
+  <div class="button-container">
+      <button onclick="prevImage('container3')"><h1 style="margin-right: 80px;"><</h1></button>
+      <button onclick="nextImage('container3')"><h1>></h1></button>
+  </div>
+</div>
+</div>
+
+
+<div class="photo"><h1>New <br>collection</h1><div class="image-container container4">
+  <img src="image4.jpg" alt="Image 4"> 
+  <div class="button-container">
+      <button onclick="prevImage('container4')"><h1 style="margin-right: 80px;"><</h1></button>
+      <button onclick="nextImage('container4')"><h1>></h1></button>
+  </div>
+</div>
+</div>
+
+
+
+<div class="photo"><h1>Old <br>collection</h1><div class="image-container container5">
+  <img src="image5.jpg" alt="Image 5"> 
+  <div class="button-container">
+      <button onclick="prevImage('container5')"><h1 style="margin-right: 80px;"><</h1></button>
+      <button onclick="nextImage('container5')"><h1>></h1></button>
+  </div>
+</div>
+</div>
+
+<script>
+    var imagesContainer1 = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeElcU0fGUBcPgKUFeXXdh7W08xPg_3Q3mO4wY04pSQ&s","https://thehouseofrare.com/cdn/shop/products/HERO_12d3c140-a3f2-4069-990f-49e383203db0.jpg?v=1676960750","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwV_BnndddeFBMRXXFgyHmSkGNrj42GQ9GR5nHd1FjNg&s"]; 
+    var imagesContainer2 = ["https://www.jiomart.com/images/product/original/rvtlcxcfes/madhuriya-elegant-linen-fabric-cord-set-for-women-multicolor-size-s-product-images-rvtlcxcfes-1-202311021934.jpg?im=Resize=(500,630)","https://i.etsystatic.com/20070408/r/il/7162e4/2094885774/il_570xN.2094885774_qz2q.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiaAxT6k5nH4qSZGFnay8IN7rmTbADFTzWaWMihmmrfw&s"]; 
+    var imagesContainer3 = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0AXyGfnHuCmo9yzGaJ2JiUCEhkDvFfVRMMstQIqjuXA&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCHilRvKaFIyC_E7h387gYLm60Auu476ug1Yrmlwe4ig&s","https://sewguide.com/wp-content/uploads/2017/12/fabric-baby-clothes.jpg"]; 
+    var imagesContainer4 = ["https://m.media-amazon.com/images/I/71bn1Mmys7L._AC_UF894,1000_QL80_.jpg", "https://www.luxurionworld.com/cdn/shop/products/multicolor-digital-printed-linen-fabric-1-mtr-401096.jpg?v=1673249033&width=533", "https://cdn.linenclub.com/media/wysiwyg/Super_Prem_462x564.jpg"]; 
+    var imagesContainer5 = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFhQLefumUW_-ogqBPIUJr7tt2EHeKag2uaB7KZ2slEw&s", "https://c8.alamy.com/comp/2T2H42G/texture-of-brown-old-canvas-linen-natural-material-with-a-coarse-perpendicular-interlacing-of-the-fibers-of-the-fabric-the-background-2T2H42G.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4YHwpKfGqXOcqfm7z5hF0Lm-LXlIcGXKPizjzGKGVbw&s"]; 
+
+  // Index to keep track of current image for each container
+  var currentIndexContainer1 = 0;
+  var currentIndexContainer2 = 0;
+  var currentIndexContainer3 = 0;
+  var currentIndexContainer4 = 0;
+  var currentIndexContainer5 = 0;
+
+  // Get image elements for each container
+  var imageElementContainer1 = document.querySelector('.container1 img');
+  var imageElementContainer2 = document.querySelector('.container2 img');
+  var imageElementContainer3 = document.querySelector('.container3 img');
+  var imageElementContainer4 = document.querySelector('.container4 img');
+  var imageElementContainer5 = document.querySelector('.container5 img');
+
+  // Function to update image source for each container
+  function updateImageContainer1() {
+      imageElementContainer1.src = imagesContainer1[currentIndexContainer1];
+  }
+
+  function updateImageContainer2() {
+      imageElementContainer2.src = imagesContainer2[currentIndexContainer2];
+  }
+
+  function updateImageContainer3() {
+      imageElementContainer3.src = imagesContainer3[currentIndexContainer3];
+  }
+
+  function updateImageContainer4() {
+      imageElementContainer4.src = imagesContainer4[currentIndexContainer4];
+  }
+
+  function updateImageContainer5() {
+      imageElementContainer5.src = imagesContainer5[currentIndexContainer5];
+  }
+
+  // Function to navigate to previous image for each container
+  function prevImage(containerId) {
+      switch (containerId) {
+          case 'container1':
+              currentIndexContainer1 = (currentIndexContainer1 - 1 + imagesContainer1.length) % imagesContainer1.length;
+              updateImageContainer1();
+              break;
+          case 'container2':
+              currentIndexContainer2 = (currentIndexContainer2 - 1 + imagesContainer2.length) % imagesContainer2.length;
+              updateImageContainer2();
+              break;
+          case 'container3':
+              currentIndexContainer3 = (currentIndexContainer3 - 1 + imagesContainer3.length) % imagesContainer3.length;
+              updateImageContainer3();
+              break;
+          case 'container4':
+              currentIndexContainer4 = (currentIndexContainer4 - 1 + imagesContainer4.length) % imagesContainer4.length;
+              updateImageContainer4();
+              break;
+          case 'container5':
+              currentIndexContainer5 = (currentIndexContainer5 - 1 + imagesContainer5.length) % imagesContainer5.length;
+              updateImageContainer5();
+              break;
+      }
+  }
+
+  // Function to navigate to next image for each container
+  function nextImage(containerId) {
+      switch (containerId) {
+          case 'container1':
+              currentIndexContainer1 = (currentIndexContainer1 + 1) % imagesContainer1.length;
+              updateImageContainer1();
+              break;
+          case 'container2':
+              currentIndexContainer2 = (currentIndexContainer2 + 1) % imagesContainer2.length;
+              updateImageContainer2();
+              break;
+          case 'container3':
+              currentIndexContainer3 = (currentIndexContainer3 + 1) % imagesContainer3.length;
+              updateImageContainer3();
+              break;
+          case 'container4':
+              currentIndexContainer4 = (currentIndexContainer4 + 1) % imagesContainer4.length;
+              updateImageContainer4();
+              break;
+          case 'container5':
+              currentIndexContainer5 = (currentIndexContainer5 + 1) % imagesContainer5.length;
+              updateImageContainer5();
+              break;
+      }
+  }
+
+  // Call updateImageContainer1(), updateImageContainer2(), updateImageContainer3(), updateImageContainer4(), and updateImageContainer5() functions on page load
+  window.onload = function() {
+      updateImageContainer1();
+      updateImageContainer2();
+      updateImageContainer3();
+      updateImageContainer4();
+      updateImageContainer5();
+  };
+</script>
+
+
+
+
+</div>
+
+<div class="navigator1" id="navigator2">
+
+
+<ul >
+    <li><a href="#Saree"><h1 style="font-size: large;">Saree</h1></a></li>
+    <li><a href="#Pents"><h1 style="font-size: large;">Shirt/pents</h1></a></li>
+    <li><a href="#Jacket"><h1 style="font-size: large;">Jacket</h1></a></li>
+    <li><a href="#Suits"><h1 style="font-size: large;">Suits</h1></a></li>
+    <li><a href="#Towel"><h1 style="font-size: large;">Towel</h1></a></li>
+    <li><a href="#Skirts"><h1 style="font-size: large;">Skirts</h1></a></li>
+    <li><a href="#Blazer"><h1 style="font-size: large;">Blazer</h1></a></li>
+    <li><a href="#Accessories"><h1 style="font-size: large;">Accessories</h1></a></li>
+              
+
+  </ul>
+</div>
+
+  <div class="containers" id="Saree">
+    <div class="photos"><a href="new.html" style="text-decoration: none;"><img src="https://linenworldonline.in/cdn/shop/products/1662308112076.jpg?v=1662308154&width=250" height="300px" width="100%" ><div class="overlay-text" style="color:blue;">Discount:20%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://linenworldonline.in/cdn/shop/files/IMG-20240205-WA0310.jpg?v=1707144347&width=250" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=1100 Only</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://linenworldonline.in/cdn/shop/products/1654432240371.jpg?v=1654432870&width=250" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:50%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://linenworldonline.in/cdn/shop/products/kanthablack2.jpg?v=1632051464&width=250" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=800 Only</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://5.imimg.com/data5/SELLER/Default/2022/3/PJ/UD/ZT/28280455/img-7898-500x500.jpeg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:30%</div></a></div>
+    
+  </div>
+  <div class="containers" id="Pents">
+    <div class="photos"><a href="#" style="text-decoration: none; overflow: hidden;"><img src="https://i.etsystatic.com/29168401/r/il/07fed0/3199228003/il_570xN.3199228003_7xou.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:30%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://i.etsystatic.com/29168401/r/il/153cba/3215435654/il_570xN.3215435654_e8ab.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=1100 Only</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKyJXaSoI-B0U2VVf9Wla1g2Ho_M_0TxJTvwUWD1mrxQ&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:60%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://imagescdn.thecollective.in/img/app/product/8/875673-10462459.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=1800 Only</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://i.pinimg.com/736x/49/61/39/496139c65a9f0812af614f556ce080b6.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=1500 Only</div></a></div>
+    
+  </div>
+  <div class="containers" id="Jacket">
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ35fG-JZCbjLu_NRojT_L9NtEOTU9Sx7j49gVhgelxw&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:50%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI_rvxj0SNfiw754Faq5nFTaJMKp2p3WC-V-DbPD6Z1g&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=2000 Only</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://i.etsystatic.com/30807620/r/il/b4a1c7/3593928307/il_570xN.3593928307_sovf.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:30%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://asset1.cxnmarksandspencer.com/is/image/mands/SD_01_T53_7057U_SS_X_EC_0?$PDP_IMAGEGRID_ZOOM_MD$" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=2200 Only</div></a></div>
+    
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://i.pinimg.com/236x/ba/84/c7/ba84c728817154a2972603ca7834ddfd.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=1800 Only</div></a></div>
+    
+  </div>
+  <div class="containers" id="Suits">
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaZdEp3AR61k-5GbJztfnDa8wHoNWnGh1JUDWG50TDww&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:50%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcurru6VIOa4hb0yNOXPn1yjlB6HO3e5dp_81LXq6cxg&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:40%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://4.imimg.com/data4/ST/NN/MY-7215262/final-cat-48-ladies-suit-500x500.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=1600 Only</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHOs5aMVllv9CUIExR_LBqGgfOrkvYkh7DloISJvXZfg&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:30%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://kalasheel.com/cdn/shop/files/IMG_7446_47e934b5-3368-493c-879f-f53a8725270a.jpg?v=1710917862" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=2100 Only</div></a></div>
+    
+  </div>
+  <div class="containers" id="Towel">
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYZ6CfEv9L8NcWnZukUIUge2IDh8K_FHDkYx6bxssd1w&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=1200 Only</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJyUH7KjfxLAYKgc3_T0inTvtmorDbPGZJj-o7UkRKMA&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:30%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4pkCKX-GcjyJUN2tWpXP8HExFA_OwkFIa9LvOvnoefw&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=900 Only</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://aa-living.com/cdn/shop/products/white-group_900x.jpg?v=1686230260" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:40%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2d1v2MAsq19jJrCkNRM2j0LOlqAIS9Th7S_cIsdsv7Q&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=1550 Only</div></a></div>
+    
+  </div>
+  <div class="containers" id="Skirts">
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyTgXi6L1Jjctyc6yjI-dovfQJDHzyiE_tVAEuyVTuSw&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:50%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcBPTf4TZ_WIQLYWCt2cwVgRP5aXUsSg61QAmBiKD8XA&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:30%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfViK_Q0BiwzzgOGrzxEG9rWof5bUXIMqTr6VEAfoRKQ&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=1500 Only</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://i.etsystatic.com/6651790/r/il/d87baf/2008507799/il_570xN.2008507799_eavs.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:40%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://5.imimg.com/data5/SELLER/Default/2021/10/RL/SB/SX/86435052/linen-wrap-skirt-high-waisted-skirt-natural-linen-skirt-for-women-mid-calf-skirt-linen.JPG" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:20%</div></a></div>
+    
+  </div>
+  <div class="containers" id="Blazer">
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/8907760385519/fyD7hCJ3Gj-8907760385519_1.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:50%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://i.etsystatic.com/30807620/r/il/4ae953/3544590108/il_570xN.3544590108_slwn.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=450 Only</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://cdn.linenclub.com/media/catalog/product/cache/41d32663a01600992c99bcd3aa36f0e1/l/c/lcmjr207db00747-n5_0.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:40%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://i.etsystatic.com/7367017/r/il/145b58/1990389322/il_570xN.1990389322_rotb.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:20%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://images-cdn.ubuy.co.in/6542ca15d9b55a282f5fa570-bestori-men-39-s-linen-blazer-suit.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue;">Discount:10%</div></a></div>
+    
+  </div>
+  <div class="containers" id="Accessories">
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuzR44rZa-b4xzQ4c0Rtoumms0WKshX36yGHqswX-3Bw&s" height="300px" width="100%"><div class="overlay-text" style="color:blue;">MRP=900 Only</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWFOzTiVC-UEqdY5pQHiXCmp-i5GVdbXSDBT01LmV-Cw&s" height="300px" width="100%"><div class="overlay-text" style="color:blue">Discount:50%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnsmyDRWoqr6PklYGFrGSr4vW1IWMb33AFqBoq20Xeeg&s" height="300px" width="100%"><div class="overlay-text" style="color:blue">Discount:40%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://m.media-amazon.com/images/I/71YnXo+535L._AC_UF894,1000_QL80_.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue">Discount:20%</div></a></div>
+    <div class="photos"><a href="#" style="text-decoration: none;"><img src="https://homeylinen.com/wp-content/uploads/2020/11/Linen-Tote-Bag-660x660.jpg" height="300px" width="100%"><div class="overlay-text" style="color:blue">Discount:30%</div></a></div>
+    
+  </div>
+
+
+</div>
+<div class="footer" id="contact">
+<foote>
+  <h1 style="font-size: 20px;  color:blue; font-style: italic; "><br><br>Contact Information<br></h1>
+  <h2 style="font-size: 20px;  color:blue; font-style: italic; "><br>email:newlin123@.com</h2>
+  <h2 style="font-size: 20px;  color:blue; font-style: italic; ">phone:3465325667345</h2>
+  <h2 style="font-size: 20px;  color:blue; font-style: italic; ">linkdin:newlin.nwm.linkdin.233546</h2>
+  <h2 style="font-size: 20px;  color:blue; font-style: italic; ">instagram:newlin.instagram</h2>
+  <h2 style="font-size: 20px;  color:blue; font-style: italic; ">facebook:newlin.facebook</h2>
+  <h2 style="font-size: 20px;  color:blue; font-style: italic; ">location:delhi</h2>
+</footer>
+</div>
+</body>
+</html>
