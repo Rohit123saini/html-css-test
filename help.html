@@ -47,7 +47,72 @@
 </style>
 </head>
 <body>
+ <div>
 
+
+<style>
+    /* Add some basic styling for better presentation */
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    #demo {
+        margin-top: 20px;
+    }
+</style>
+
+
+<button onclick="getLocation()">Get Place ID</button>
+
+<p id="demo"></p>
+
+<script>
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        document.getElementById("demo").innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    
+    // Send latitude and longitude to your server to get the place ID
+    // For demonstration, we're just displaying it here
+    document.getElementById("demo").innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
+
+    // Here you can make an AJAX request to your server to get the place ID based on latitude and longitude
+}
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            document.getElementById("demo").innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            document.getElementById("demo").innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            document.getElementById("demo").innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            document.getElementById("demo").innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+</script>
+
+
+
+               
+         </div>
 <div class="container">
     <h2>Open an Account</h2>
     <form action="/submit_account_details" method="post">
